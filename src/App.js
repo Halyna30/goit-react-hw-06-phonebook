@@ -6,7 +6,7 @@ import Filter from './Components/Filter/Filter';
 import ListContacts from './Components/ListContacts/ListContacts';
 
 const App = ({
-  contacts,
+  items,
   filter,
   onAddContact,
   onDeleteContact,
@@ -20,76 +20,19 @@ const App = ({
       <h2 className="title">Contacts</h2>
       <Filter value={filter} onChange={onChangeFilter} />
 
-      <ListContacts contacts={contacts} onDelete={onDeleteContact} />
+      <ListContacts contacts={items} onDelete={onDeleteContact} />
     </>
   );
 };
 
-// state = {
-//   contacts: [],
-//   filter: '',
-// };
-
-// componentDidMount() {
-//   const contacts = localStorage.getItem('contacts');
-//   const parsedСontacts = JSON.parse(contacts);
-
-//   if (parsedСontacts) {
-//     this.setState({ contacts: parsedСontacts });
-//   }
-// }
-
-// componentDidUpdate(prevState) {
-//   const nextСontacts = this.state.contacts;
-//   const prevСontacts = prevState.contacts;
-
-//   if (nextСontacts !== prevСontacts) {
-//     localStorage.setItem('contacts', JSON.stringify(nextСontacts));
-//   }
-// }
-
-// handleSubmit = ({ name, number }) => {
-//   const isInContacts = this.state.contacts.find(
-//     item => item.name.toLowerCase() === name.toLowerCase(),
-//   );
-//   if (isInContacts) {
-//     alert(`${name} is already in contacts`);
-//     return;
-//   }
-
-//   const contact = {
-//     id: nanoid(),
-//     name,
-//     number,
-//   };
-
-//   this.setState(({ contacts }) => ({
-//     contacts: [contact, ...contacts],
-//   }));
-// };
-
-// changeFilter = event => {
-//   const { value } = event.target;
-
-//   this.setState({
-//     filter: value,
-//   });
-// };
-
-// handlerDelete = contactId => {
-//   this.setState(prevState => ({
-//     contacts: prevState.contacts.filter(contact => contact.id !== contactId),
-//   }));
-// };
-
-const getVisibleContacts = (contacts, filter) => {
+const getVisibleContacts = (items, filter) => {
   const normalizedFilter = filter.toLowerCase();
-  return contacts.filter(({ name }) =>
+  return items.filter(({ name }) =>
     name.toLowerCase().includes(normalizedFilter),
   );
 };
-const mapStateToProps = ({ contacts, filter }) => ({
-  contacts: getVisibleContacts(contacts, filter),
+const mapStateToProps = ({ contacts: { items, filter } }) => ({
+  items: getVisibleContacts(items, filter),
   filter: filter,
 });
 
