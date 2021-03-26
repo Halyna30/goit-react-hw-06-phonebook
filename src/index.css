@@ -13,3 +13,56 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.title {
+  width: 300px;
+  margin: 0 auto;
+  color: green;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 30px;
+  line-height: 1.8;
+  color: green;
+}
+
+.input {
+  display: block;
+  margin-bottom: 15px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.btn {
+  color: white;
+  background-color: green;
+  border-radius: 10px;
+}
+.btn[disabled] {
+  border: 1px solid rgba(16, 223, 126, 0.3);
+  background-color: greenyellow;
+}
+
+form > .btn {
+  width: 100%;
+}
+
+.container {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.container.list {
+  padding: 0;
+}
+.contact {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact > p {
+  margin-right: 20px;
+}
